@@ -27,8 +27,7 @@ SylixOS 已拥有一套命令行的实现机制，拥有丰富且实用的shell 
 
 **陈洪邦**
 
-* github
-
+* github [edward518](https://github.com/edward518)
 * email chenhongbang@acoinfo.com
 
 
