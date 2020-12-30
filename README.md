@@ -1,17 +1,13 @@
-# proj12-shell-enhancement-on-SylixOS
+# proj2x-SylixOS-porting-to-Raspberry-Pi
 ### 项目描述
 
-SylixOS 是中国自主可控的大型实时操作系统，于二零零六年开始研发，经过多年的持续开发与改进，SylixOS 已经成为一个功能全面，稳定可靠，易于开发的实时系统平台。
+SylixOS 全面支持 ARM / PowerPC / MIPS / x86 / SPARC / DSP / RISC-V / C-SKY， 同时支持主流半导体厂商的大量板卡和设备，部分支持列表可参考[翼辉官网](https://www.acoinfo.com/html/edu_con/cpu.html)。
 
-SylixOS 是中国人完全自主设计开发，内核开源的操作系统。目前功能已非常完备，在国防、航空航天、电力、轨道交通、 工业自动化 等领域有着广泛的应用。
+低成本，高性能的Raspberry Pi（树莓派）计算机和配件，是为学习计算机编程教育而设计，在教育和创客领域非常流行。树莓派OS是基于Linux 发行版 Debian设计改造的。
 
-SylixOS 已拥有一套命令行的实现机制，拥有丰富且实用的shell 命令行，并具备简单的shell脚本能力。
+目前主流的树莓派是Raspberry Pi 4，其芯片是BCM2711，处理器是4核的Cortex-A72 (ARM v8)   64-bit，SylixOS 内核已支持ARM 32-bit 和  ARM  64-bit (ARM v8)架构，并且SylixOS支持多核处理器 SMP运行。
 
-我们的目标是设计并完善命令行机制，增强shell命令行编程能力，目的是帮助学生深入理解操作系统的人机交互，掌握操作系统交互和编程语言的设计和实现。
-
-- 实现命令行自动补全、联想帮助、管道、过滤和分屏显示机制
-
-- 增强 Shell 命令行编程能力
+我们的目标是在Raspberry Pi 4 上完成 SylixOS 最小系统开发适配和基础功能开发，SylixOS最小系统包括系统时钟、系统中断和串口通信功能，基础功能包括网络通信与存储等功能。
 
 ### 所属赛道
 
@@ -25,51 +21,56 @@ SylixOS 已拥有一套命令行的实现机制，拥有丰富且实用的shell 
 
 ### 项目导师
 
-**陈洪邦**
+葛文斌
 
-* github [edward518](https://github.com/edward518)
-* email chenhongbang@acoinfo.com
+* github [databuser](https://github.com/databuser)
+* email  gewenbin@acoinfo.com
 
 
 ### 难度
 
-中等
+第一题 、第二题：中等 ， 第三题：困难
 
 
 ### 特征
 
-- 兼容 SylixOS 命令行实现，可在此基础上进行功能扩增；
-- 实现命令行关键字的自动补全，例如 if?  回车后，打印if开头的命令行关键字，按Tab键可以直接补全或切换（多个选项时），if?  ifconfig；
-
-- 实现命令行关键字和参数的联想帮助，例如：ifconfig  ?  回车后，打印此命令后面可以输入的关键字或参数。
+- 参考am335的BSP实现，了解SylixOS系统引导启动流程
+- 在树莓派上完成SylixOS最小系统运行，并实现通过串口进行shell交互
+- 需要熟练掌握C语言，了解ARM汇编指令
 
 ### 文档
 
-[SylixOS shell增强开发指导文档](https://github.com/acoinfo/sylixos_oscomp_2021/tree/master/shell_enhancement)
+[SylixOS 最小系统开发适配指导文档](https://github.com/acoinfo/sylixos_oscomp_2021/tree/master/SylixOS-porting-to-Raspberry-Pi)
 
-[SylixOS shell用户手册](https://github.com/acoinfo/sylixos_oscomp_2021/tree/master/shell_enhancement)
-
-### 源代码
-* [libcextern.git](http://git.sylixos.com/cgit/cgit.cgi/libcextern.git/) 
-
-* [libsylixos.git](http://git.sylixos.com/cgit/cgit.cgi/libsylixos.git/) 
+### 参考代码
+* [bspam335x](http://git.sylixos.com/cgit/cgit.cgi/bspam335x.git/)
 
 ### License
 
-* [The MIT License](https://opensource.org/licenses/MIT)
+*  [The MIT License](https://opensource.org/licenses/MIT)
 
 ## 预期目标
 
 ### 注意：下面的内容是建议内容，不要求必须全部完成。选择本项目的同学也可与导师联系，提出自己的新想法，如导师认可，可加入预期目标
 
-### 第一题：实现命令行自动补全、联想帮助、管道、过滤和分屏显示机制
+### 第一题：完成SylixOS CPU单核启动最小系统开发
 
-* 实现命令行关键字的自动补全功能
-* 实现命令行关键字和参数的联想帮助
-* 实现命令之间的管道操作 |，支持输出过滤和分屏显示
+*  完成SylixOS 在Raspberry Pi 4上引导启动和初始化，完成ARM 32-bit或ARM 64-bit和CPU单核启动
+* 完成系统时钟和系统中断功能
+* 可以进行串口通信
 
-### 第二题：增强 Shell 命令行编程能力
+### 第二题：完成SylixOS CPU多核启动最小系统开发
 
-* 支持分支语句，if/elif/else
-* 支持循环语句，while/for，支持 break/continue
-* 支持 find、grep、awk、sed 实用命令
+* 完成SylixOS 在Raspberry Pi 4上引导启动和初始化，完成ARM 32-bit或ARM 64-bit和CPU多核启动
+* 完成系统时钟和系统中断功能
+* 能进行串口通信
+
+### 第三题： 完成SylixOS 的网络通信和存储功能
+
+* 完成第二题中多核启动最小系统
+
+* 完成以太网网卡的网络通信功能
+
+* 完成SD卡的存储功能
+
+  
